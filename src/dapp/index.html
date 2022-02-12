@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Flight Surety App</title>
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/js/bootstrap.min.js"></script>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+
+<body>
+
+  <div class="top-20 text-center"><h1 style="color: #FFFFFF;">Flight Surety App</h1></div>
+
+    <div class="wrapper text-center mt-3">
+      <table class="table table-dark" id="flights-display">
+        <thead>
+          <tr>
+              <th scope="col">Flight</th>
+              <th scope="col">Destination</th>
+              <th scope="col">Departure Time</th>
+              <th scope="col">Status</th>
+            </tr>
+        </thead>
+        <tbody>
+          <tr id="empty-row" class="w-100">
+            <td></td>
+            <td class="text-right" style="padding-left: 90px;">No Records Found.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="wrapper text-center">
+      <div id="display-wrapper" class="top-20">
+      </div>
+    </div>
+
+    <main class="wrapper text-center">
+
+            <h3>Actions</h3>
+            <div class="form-group top-20 text-center">
+              <div>
+                <label>Fund atleast 10 ETH to be an Operational Airline.</label>
+              </div>
+              <div class="input-group mb-2 col-md-6 p-0 m-auto">
+                  <div class="input-group-prepend">
+                      <div class="input-group-text">ETH</div>
+                  </div>
+                  <input type="text" class="form-control" id="funds" placeholder="Enter ETH">
+                  <div class="col-md-12 mt-3"><button type="submit" class="btn btn-primary m-auto w-50" id="fund">Fund ETH</button></div>
+              </div>
+            </div>
+
+            <div class="form-row top-20">
+              <div class="form-group col-md-6">
+                <label>Airline address</label>
+                <input type="text" class="form-control" id="airline-address" placeholder="Address">
+              </div>
+              <div class="form-group col-md-6">
+                <label>Airline name</label>
+                <input type="text" class="form-control" id="airline-name" placeholder="Name">
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary" id="register-airline">Register Airline</button>
+
+            <div class="top-20"><h2>Flights actions</h2></div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label>Flight Number</label>
+                <input type="text" class="form-control" id="new-flight-number" onkeyup="this.value = this.value.toUpperCase();"> 
+              </div>
+              <div class="form-group col-md-6">
+                <label>Flight Destination</label>
+                <input type="text" class="form-control" id="new-flight-destination" placeholder="City name" onkeyup="this.value = this.value.toUpperCase();">
+              </div>
+            </div>  
+            <button class="btn btn-primary" id="register-flight">Register Flight</button>
+
+            <div class="top-20"><h2>Passengers actions</h2></div>
+            <div class="form-row top-20">
+              <div class="form-group col-md-6">
+                <label>Flight number</label>
+                <input type="text" class="form-control" id="insurance-flight" onkeyup="this.value = this.value.toUpperCase();">
+              </div>
+              <div class="form-group col-md-6">
+                <label>Insurance payment</label>
+                <div class="input-group mb-2">
+                  <div class="input-group-prepend">
+                      <div class="input-group-text">ETH</div>
+                  </div>
+                  <input type="text" class="form-control" id="insurance-price">
+                </div>
+              </div>
+            </div>
+            <button class="btn btn-primary" id="buy-insurance">Buy insurance</button>
+            
+            <div class="top-20"><h2>Claim Credit</h2></div>
+            <div class="form-row top-20">
+                <div class="form-group col-md-6">
+                  <div class="form-row">
+                    <div class="form-group col-md-1.5">
+                      <button class="btn btn-primary" id="check-credit">Calculate Credit</button>
+                    </div>
+                    <div class="form-group col-md">
+                        <input type="text" class="form-control" id="credit-ammount" placeholder="Your Calculated Credit" disabled>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group col-md-6">
+                  <button class="btn btn-primary" id="claim-credit">Claim Credit Amount</button>
+                </div>
+            </div>
+            <div class="top-20"><h2>Oracle Simulated Actions</h2>
+              <h5>Change Status of the Flight</h5>
+            </div>
+            <div class="form-row top-20" id='statusButton' style="justify-content: center;">
+              <div class="form-group col-md-1.1">
+                <button class="btn btn-primary" value="10">On Time</button>
+              </div>
+              <div class="form-group col-md-1.1">
+                <button class="btn btn-primary" value="20">Late Airline</button>
+              </div>
+              <div class="form-group col-md-1.1">
+                <button class="btn btn-primary" value="30">Late Weather</button>
+              </div>
+              <div class="form-group col-md-1.1">
+                <button class="btn btn-primary" value="40">Late Technical</button>
+              </div>
+              <div class="form-group col-md-1.1">
+                <button class="btn btn-primary" value="50">Late Other</button>
+              </div>
+              <div class="form-group col-md-1.1">
+                <button class="btn btn-primary" value="60">Unknown</button>
+              </div>
+            </div>
+
+            <div class="form-row top-20">
+              <div class="form-group col-md-2">
+                <label>Airline list</label>
+                <div class="dropdown">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Select an airline
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="airlineDropdownOptions">
+                    <button class="dropdown-item" value="#" type="button" id="default-air">Deafult Airlines</button>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group col-md-2">
+                <label>Airline Name</label>
+                <input type="text" class="form-control" id="selected-airline-name" placeholder="Name">
+              </div>
+              <div class="form-group col-md-6">
+                <label>Airline address</label>
+                <input type="text" class="form-control" id="selected-airline-address">
+              </div>
+              <div class="form-group col-md-2">
+                <label>Flight Number</label>
+                <input type="text" class="form-control" id="flight-number" placeholder="Flight" onkeyup="this.value = this.value.toUpperCase();">
+              </div>
+            </div>
+            <button class="btn btn-primary" id="submit-oracle">
+              <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" id="oracles-spinner" hidden></span>
+              Submit to Oracles
+            </button>
+    </main>
+
+</body>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</html>
