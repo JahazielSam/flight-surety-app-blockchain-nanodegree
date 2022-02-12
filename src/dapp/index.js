@@ -162,7 +162,7 @@ $(document).ready(function(){
         let flightCode = e.srcElement.innerHTML;
         console.log(e);
         console.log(flightCode);
-        flightCode = flightCode.replace("✈ ", "").replace("<b>", "").replace("</b>", "");
+        flightCode = flightCode.replace("", "").replace("<b>", "").replace("</b>", "");
         navigator.clipboard.writeText(flightCode).then(function() {
             console.log(`Async: Copying to clipboard was successful! Copied: ${flightCode}`);
         }, function(err) {
@@ -211,7 +211,7 @@ function flightDisplay(flight, destination, airlineName, time) {
     
     var date = new Date(+time);
     // Add some text to the new cells:
-    cell1.innerHTML = "<b>✈ " + flight+"</b>";
+    cell1.innerHTML = "<b>" + flight+"</b>";
     cell1.setAttribute("data-toggle",  "tooltip");
     cell1.setAttribute("data-placement",  "top");
     cell1.title="Click on flight code to copy";
