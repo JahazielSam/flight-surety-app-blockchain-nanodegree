@@ -34,7 +34,7 @@ Deploy the contents of the ./dapp folder
 
 # Library Versions
 
-- Node.js v6.14.4
+- Node.js v16.14.0
 - Solidity v0.4.25
 - Truffle v5.1.27
 - Ganache v6.10.0-beta.2
