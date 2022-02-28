@@ -1,6 +1,6 @@
 # FlightSuretyApp
 
-FlightSuretyApp is a project for Udacity's Blockchain course.
+FlightSuretyApp is a flight insurance application to track the real time status of the flight and provide insurance amount to the passengers. It uses ETH as the currency. Includes js, Solidity and Node.js
 
 ## Install
 
